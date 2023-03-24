@@ -39,5 +39,18 @@ namespace autoclicker
 
             return Return;
         }
+
+        public static Process Processbyname(String procname)
+        {
+            Process Return = new Process();
+            foreach (Process process in processlist)
+            {
+                if (process.MainWindowTitle == procname)
+                {
+                    Return = process;
+                }
+            }
+            return Return;
+        }
     }
 }
