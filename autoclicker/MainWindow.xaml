@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:autoclicker"
         mc:Ignorable="d"
-        Title="Autoclicker" Height="250" Width="350">
+        Title="Autoclicker" Height="216" Width="350">
     <Grid Margin="10,10,10,10">
 
         <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
 
         <ComboBox Grid.Row="1" x:Name="windowselector">
         </ComboBox>
-        
+
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
             <CheckBox Grid.Row="2" IsChecked="False" Click="CheckBox_Click" x:Name="randombox">
                 randomize
@@ -37,7 +37,7 @@
                     x:Name="refresh_button"
                     Click="Refreshwindows"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="3" Visibility="Collapsed" x:Name="randomizerpanel">
             <StackPanel Orientation="Horizontal">
                 <Label>min [s]</Label>
@@ -60,26 +60,26 @@
             </StackPanel>
 
         </StackPanel>
-        
+
         <StackPanel 
             Grid.Row="4" 
             Grid.Column="0" 
             Grid.ColumnSpan="2"
             Orientation="Horizontal" 
-            Margin="5,0,0,0">
-            
+            Margin="0,0,0,0">
+
             <Button
                 x:Name="start"
 
                 Content="start" 
                 Click="startbutton" Width="150" />
-            
+
             <Button 
                 x:Name="stop" 
-                Margin="5,0,0,0" 
+                Margin="11,0,0,0" 
                 Content="stop" 
-                Click="stopbutton" Width="150"/>
-            
+                Click="stopbutton" Width="153"/>
+
         </StackPanel>
 
         <!--column 2-->
@@ -89,8 +89,8 @@
                  Grid.Row="0"
                  Grid.Column="1"
                  Grid.RowSpan="4"
-                 Height="121"
-                 Margin="10,0,0,0">
+                 Height="115"
+                 Margin="10,0,0,2">
         </ListBox>
 
 
