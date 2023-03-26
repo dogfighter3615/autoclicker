@@ -14,9 +14,6 @@ namespace autoclicker
         public static bool cstop = new bool();
         private static int cprocid = new int();
         private static bool crandom = new bool();
-        private static bool ccenter = new bool();
-        private static int cx = new int();
-        private static int cy = new int();
         private static float ctime = new int();
         private static float ctimemin = new int();
         private static float ctimemax = new int();
@@ -35,9 +32,9 @@ namespace autoclicker
 
             Thread clickloop = new Thread(loop);
             clickloop.Start();
-
+            
         }
-
+        
 
         static void loop() { 
             Random rand = new Random();
@@ -48,7 +45,7 @@ namespace autoclicker
                     float sample = (float)rand.NextDouble();
                     ctime = (sample * (ctimemax - ctimemin)) + ctimemin;
                 }
-                Click.Clicks(cprocid, ccenter, cx, cy);
+                Click.Clicks(cprocid);
                 Thread.Sleep((int)ctime*1000);
             }
         }

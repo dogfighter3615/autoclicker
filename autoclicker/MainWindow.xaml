@@ -23,19 +23,21 @@
 
         <!--column 1-->
         <Label>Autoclicker</Label>
-
+        <!--
         <ComboBox Grid.Row="1" x:Name="windowselector">
         </ComboBox>
-
+        -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
             <CheckBox Grid.Row="2" IsChecked="False" Click="CheckBox_Click" x:Name="randombox">
                 randomize
             </CheckBox>
+            
             <Button Content="refresh"
                     Margin="10,0,0,0"
                     Width="60"
                     x:Name="refresh_button"
                     Click="Refreshwindows"/>
+            
         </StackPanel>
 
         <StackPanel Grid.Row="3" Visibility="Collapsed" x:Name="randomizerpanel">
