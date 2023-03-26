@@ -26,11 +26,9 @@ namespace autoclicker
         {
             InitializeComponent();
             Debug.WriteLine("hi");
-            List<String> windowlist = new List<String>();
-            windowselector.ItemsSource = windowlist;
             foreach (String Window in Windows.Titles())
             {
-                windowlist.Add(Window);
+                windowselector.Items.Add(Window);
             }
             //logbox.SetBinding(Logger.LogMessages);
         }
@@ -66,40 +64,38 @@ namespace autoclicker
             {
                 if (stopping == true)
                 {
-                    if (xcoords.Text == "" || ycoords.Text == "")
-                    {
-                        stopping = false;
+
+
+                    stopping = false;
 #pragma warning disable CS8604 // Possible null reference argument.
-                        Process process = Windows.Processbyname(windowselector.SelectedItem.ToString());
+                    Process process = Windows.Processbyname(windowselector.SelectedItem.ToString());
 #pragma warning restore CS8604 // Possible null reference argument.
-                        if (randombox.IsChecked == true && randombox.IsChecked.HasValue)
+                    if (randombox.IsChecked == true && randombox.IsChecked.HasValue)
+                    {
+                        try
                         {
-                            try
-                            {
-                                float mintime = float.Parse(timemin.Text);
-                                float maxtime = float.Parse(timemax.Text);
-                                Loop.Clickyloop(stopping, process.Id, false, true, time: 7);
-                            }
-                            catch (FormatException)
-                            {
-                                logbox.Items.Add("time must be a float (eg: 1.2)");
-                            }
+                            float mintime = float.Parse(timemin.Text);
+                            float maxtime = float.Parse(timemax.Text);
+                            Loop.Clickyloop(stopping, process.Id, false, timemin: mintime, timemax: maxtime);
+                        }
+                        catch (FormatException)
+                        {
+                            logbox.Items.Add("time must be a float (eg: 1.2)");
                         }
                     }
                     else
                     {
                         try
                         {
-                            int x = Int32.Parse(xcoords.Text);
-                            int y = Int32.Parse(ycoords.Text);
+                            float time = float.Parse(timeset.Text);
+                            Loop.Clickyloop(stopping, process.Id, false, time: time);
                         }
                         catch (FormatException)
                         {
-                            logbox.Items.Add("coordinates must be integers");
+                            logbox.Items.Add("time must be a float (eg: 1.2");
                         }
                     }
                 }
-
                 logbox.Items.Add(windowselector.SelectedItem.ToString());
             }
         }
@@ -112,6 +108,19 @@ namespace autoclicker
             Loop.cstop = true;
             stopping = true;
 
+        }
+
+        private void Refreshwindows(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("refreshing windows");
+            logbox.Items.Add("refreshing window titles");
+            List<String> windowlist = new List<String>();
+           
+            windowselector.Items.Clear();
+            foreach (String Window in Windows.Titles())
+            {
+                windowselector.Items.Add(Window);
+            }
         }
     }
 }

@@ -15,16 +15,20 @@ namespace autoclicker
     internal class Click
     {
         [DllImport("user32.dll")]
-        private static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+        public static extern IntPtr PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string className, string windowTitle);
+
 
         public struct RECT
         {
             public int Left;
             public int Top;
-            public int Right;   
+            public int Right;
             public int Bottom;
         }
 
@@ -50,25 +54,11 @@ namespace autoclicker
         {
 
             Process process = Process.GetProcessById(procid);
-            IntPtr hWnd = process.MainWindowHandle;
-            RECT rect;
+            IntPtr minecraftHandle = process.MainWindowHandle;
+            Debug.WriteLine("_click_");
 
-            if (center)
-            {
-                if (GetWindowRect(hWnd, out rect))
-                {
-                    x = (rect.Right - rect.Left)/2;
-                    y = (rect.Bottom - rect.Top)/2;
-                    
-                }
-            }
-            Debug.WriteLine(x +","+ y + "hi");
-            int lParam = x | (y << 16);
-
-            PostMessage(hWnd, WM_LBUTTONDOWN, 1, lParam);
-            PostMessage(hWnd, WM_LBUTTONUP, 0, lParam);
-
-            
-        }
+            PostMessage(minecraftHandle, WM_LBUTTONDOWN, IntPtr.Zero, IntPtr.Zero);
+            PostMessage(minecraftHandle, WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
+        } 
     }
 }

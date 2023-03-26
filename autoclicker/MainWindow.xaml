@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:autoclicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="365">
-    <Grid Margin="10,10,0,10">
+        Title="Autoclicker" Height="250" Width="350">
+    <Grid Margin="10,10,10,10">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,11 +26,18 @@
 
         <ComboBox Grid.Row="1" x:Name="windowselector">
         </ComboBox>
-
-        <CheckBox Grid.Row="2" IsChecked="False" Click="CheckBox_Click" x:Name="randombox">
-            randomize
-        </CheckBox>
-
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
+            <CheckBox Grid.Row="2" IsChecked="False" Click="CheckBox_Click" x:Name="randombox">
+                randomize
+            </CheckBox>
+            <Button Content="refresh"
+                    Margin="10,0,0,0"
+                    Width="60"
+                    x:Name="refresh_button"
+                    Click="Refreshwindows"/>
+        </StackPanel>
+        
         <StackPanel Grid.Row="3" Visibility="Collapsed" x:Name="randomizerpanel">
             <StackPanel Orientation="Horizontal">
                 <Label>min [s]</Label>
@@ -53,79 +60,40 @@
             </StackPanel>
 
         </StackPanel>
-
-        <ListBox  
-                 ScrollViewer.CanContentScroll="False" 
-                 x:Name="logbox"
-                 Grid.Row="4">
-        </ListBox>
-
-        <!--column 2-->
-
-        <Label 
-            Grid.Row="1" 
-            Grid.Column="1" 
-            Margin="5,0,0,0">
-            leave blank to click in the center
-        </Label>
-
+        
         <StackPanel 
-            Grid.Row="2" 
-            Grid.Column="1" 
-            x:Name="coords" 
-            Margin="5,0,0,0">
-
-            <StackPanel 
-                Orientation="Horizontal">
-                
-                <Label>
-                    x
-                </Label>
-                
-                <Label 
-                    Margin="60,0,0,0"
-                    >
-                    y
-                </Label>
-            </StackPanel>
-            
-            <StackPanel 
-                Orientation="Horizontal">
-                
-                <TextBox 
-                    x:Name="ycoords" 
-                    Width="60"/>
-                
-                <TextBox 
-                    x:Name="xcoords"
-                    Width="60" 
-                    Margin="5,0,0,0"/>
-                
-            </StackPanel>
-            
-        </StackPanel>
-
-        <StackPanel 
-            Grid.Row="3" 
-            Grid.Column="1" 
+            Grid.Row="4" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2"
             Orientation="Horizontal" 
             Margin="5,0,0,0">
             
             <Button
                 x:Name="start"
-                Width="60"
-                Height="20" 
+
                 Content="start" 
-                Click="startbutton" />
+                Click="startbutton" Width="150" />
             
             <Button 
                 x:Name="stop" 
-                Width="60" Height="20" 
                 Margin="5,0,0,0" 
                 Content="stop" 
-                Click="stopbutton"/>
+                Click="stopbutton" Width="150"/>
             
         </StackPanel>
+
+        <!--column 2-->
+        <ListBox  
+                 ScrollViewer.CanContentScroll="False" 
+                 x:Name="logbox"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.RowSpan="4"
+                 Height="121"
+                 Margin="10,0,0,0">
+        </ListBox>
+
+
 
     </Grid>
 </Window>

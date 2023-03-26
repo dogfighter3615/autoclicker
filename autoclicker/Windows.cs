@@ -14,6 +14,7 @@ namespace autoclicker
         public static List<String> Titles(){
 
             List<String> Return = new List<String>();
+            processlist = Process.GetProcesses();
 
             foreach (Process process in processlist){
                 if (process.MainWindowTitle != "")

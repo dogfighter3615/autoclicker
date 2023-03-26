@@ -17,22 +17,18 @@ namespace autoclicker
         private static bool ccenter = new bool();
         private static int cx = new int();
         private static int cy = new int();
-        private static int ctime = new int();
-        private static int ctimemin = new int();
-        private static int ctimemax = new int();
+        private static float ctime = new int();
+        private static float ctimemin = new int();
+        private static float ctimemax = new int();
 
         public static void Clickyloop(bool stop, int procid,
-        bool random, bool center,
-        int x = 0, int y = 0,
-        int time = 0, int timemin = 0,
-        int timemax = 0)
+        bool random,
+        float time = 0, float timemin = 0,
+        float timemax = 0)
         {
             cstop = stop;
             cprocid = procid;
             crandom = random;
-            ccenter = center;
-            cx = x;
-            cy = y;
             ctime = time;
             ctimemin = timemin;
             ctimemax = timemax;
@@ -44,10 +40,16 @@ namespace autoclicker
 
 
         static void loop() { 
+            Random rand = new Random();
             while (!cstop)
-            {
+            { 
+                if (crandom)
+                {
+                    float sample = (float)rand.NextDouble();
+                    ctime = (sample * (ctimemax - ctimemin)) + ctimemin;
+                }
                 Click.Clicks(cprocid, ccenter, cx, cy);
-                System.Threading.Thread.Sleep(ctime*100);
+                Thread.Sleep((int)ctime*1000);
             }
         }
     }

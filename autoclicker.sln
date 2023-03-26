@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "autoclicker", "autoclicker\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9D0CF0D-3B45-4262-9EAA-D866087AE751}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutoclickerSetup", "AutoclickerSetup\AutoclickerSetup.vdproj", "{347D9628-A059-4737-B555-573B12A35888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,8 @@ Global
 		{6141031A-CBEA-4293-A185-E2D79B50D2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6141031A-CBEA-4293-A185-E2D79B50D2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6141031A-CBEA-4293-A185-E2D79B50D2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347D9628-A059-4737-B555-573B12A35888}.Debug|Any CPU.ActiveCfg = Debug
+		{347D9628-A059-4737-B555-573B12A35888}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
