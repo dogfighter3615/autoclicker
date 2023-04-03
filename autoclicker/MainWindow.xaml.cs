@@ -76,7 +76,7 @@ namespace autoclicker
                         {
                             float mintime = float.Parse(timemin.Text);
                             float maxtime = float.Parse(timemax.Text);
-                            Loop.Clickyloop(stopping, process.Id, false, timemin: mintime, timemax: maxtime);
+                            Loop.Clickyloop(stopping, process.Id, true, timemin: mintime, timemax: maxtime);
                         }
                         catch (FormatException)
                         {
